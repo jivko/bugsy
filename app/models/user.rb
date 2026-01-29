@@ -1,6 +1,9 @@
 class User < ApplicationRecord
   has_secure_password
   has_many :sessions, dependent: :destroy
+  has_many :owned_projects, class_name: "Project", foreign_key: :owner_id, dependent: :destroy
+  has_many :project_memberships, dependent: :destroy
+  has_many :projects, through: :project_memberships
 
   enum :role, { member: 0, admin: 1 }, default: :member
 

@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   resource :registration, only: [ :new, :create ]
   resources :passwords, param: :token
   resources :users, except: [:show]
+  resources :projects do
+    resources :members, controller: "project_members", only: [:index, :create, :destroy]
+  end
   get "home/index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

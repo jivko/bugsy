@@ -30,6 +30,7 @@
         
         <div class="flex items-center gap-4">
           <% if authenticated? %>
+            <%= link_to "Projects", projects_path, class: "text-sm text-gray-700 hover:text-gray-900" %>
             <% if Current.user.admin? %>
               <%= link_to "Users", users_path, class: "text-sm text-gray-700 hover:text-gray-900" %>
             <% end %>

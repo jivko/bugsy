@@ -1,0 +1,15 @@
+<div class="w-full">
+  <div class="flex justify-between items-center mb-6">
+    <div>
+      <h1 class="font-bold text-4xl"><%= @project.name %></h1>
+      <% if @project.description.present? %>
+        <p class="text-gray-500 mt-2"><%= @project.description %></p>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="bg-gray-50 rounded-lg p-8 text-center">
+    <p class="text-gray-500 mb-2">Board coming soon...</p>
+    <p class="text-sm text-gray-400">This is where the Kanban board will be displayed.</p>
+  </div>
+</div>
