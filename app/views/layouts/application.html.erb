@@ -30,7 +30,10 @@
         
         <div class="flex items-center gap-4">
           <% if authenticated? %>
-            <span class="text-gray-600 text-sm"><%= Current.user.email_address %></span>
+            <% if Current.user.admin? %>
+              <%= link_to "Users", users_path, class: "text-sm text-gray-700 hover:text-gray-900" %>
+            <% end %>
+            <%= link_to Current.user.display_name, edit_user_path(Current.user), class: "text-gray-600 text-sm hover:text-gray-900" %>
             <%= button_to "Sign out", session_path, method: :delete, class: "text-sm text-gray-700 hover:text-gray-900 underline hover:no-underline cursor-pointer" %>
           <% else %>
             <%= link_to "Sign in", new_session_path, class: "text-sm text-gray-700 hover:text-gray-900" %>
@@ -40,7 +43,14 @@
       </div>
     </nav>
 
-    <main class="container mx-auto mt-10 px-5 flex">
+    <main class="container mx-auto mt-10 px-5 flex flex-col">
+      <% if notice.present? %>
+        <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block self-start"><%= notice %></p>
+      <% end %>
+      <% if alert.present? %>
+        <p class="py-2 px-3 bg-red-50 mb-5 text-red-500 font-medium rounded-lg inline-block self-start"><%= alert %></p>
+      <% end %>
+
       <%= yield %>
     </main>
   </body>
