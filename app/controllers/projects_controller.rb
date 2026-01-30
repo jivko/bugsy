@@ -29,7 +29,7 @@ class ProjectsController < ApplicationController
 
   def update
     if @project.update(project_params)
-      redirect_to @project, notice: "Project updated successfully."
+      redirect_to projects_path, notice: "Project updated successfully."
     else
       render :edit, status: :unprocessable_entity
     end
